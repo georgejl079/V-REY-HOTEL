@@ -1,0 +1,2364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V REY HOTEL | Hotel de Lujo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   V REY HOTEL — Sistema de diseño
+   ========================================================== */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --negro:#0a0a0a;
+  --negro-suave:#111;
+  --negro-card:#161616;
+  --negro-elevado:#1c1c1c;
+  --dorado:#d4af37;
+  --dorado-claro:#f4d03f;
+  --dorado-oscuro:#a8881f;
+  --gris:#8a8a8a;
+  --gris-claro:#c9c9c9;
+  --blanco:#f8f8f8;
+  --verde:#2ecc71;
+  --rojo:#e74c3c;
+  --borde:#242424;
+  --radio:14px;
+  --radio-sm:8px;
+  --sombra:0 20px 60px rgba(0,0,0,.5);
+  --sombra-dorada:0 15px 40px rgba(212,175,55,.25);
+  --transicion:all .35s cubic-bezier(.2,.7,.3,1);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--negro);color:var(--blanco);
+  line-height:1.65;overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto;}
+button,input,textarea,select{font-family:inherit;font-size:inherit;}
+a{color:inherit;}
+.page{display:none;animation:fadePage .4s ease;}
+.page.active{display:block;}
+@keyframes fadePage{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* ==========================================================
+   HEADER DESKTOP
+   ========================================================== */
+.header{
+  position:fixed;top:0;left:0;width:100%;
+  background:rgba(10,10,10,.85);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(212,175,55,.15);
+  z-index:100;transition:var(--transicion);
+}
+.header-inner{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.2rem 5%;max-width:1500px;margin:0 auto;
+}
+.brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;letter-spacing:3px;font-weight:700;
+  text-decoration:none;color:var(--blanco);cursor:pointer;
+  white-space:nowrap;
+}
+.brand span{color:var(--dorado);}
+.brand .subtitulo{
+  display:block;font-family:'Poppins',sans-serif;
+  font-size:.55rem;letter-spacing:4px;font-weight:400;
+  color:var(--gris);margin-top:-2px;text-transform:uppercase;
+}
+.nav-desktop{display:flex;gap:2.5rem;align-items:center;}
+.nav-desktop a{
+  text-decoration:none;color:var(--gris-claro);
+  font-size:.88rem;letter-spacing:1.5px;text-transform:uppercase;
+  font-weight:500;position:relative;padding:.3rem 0;
+  transition:color .3s;cursor:pointer;
+}
+.nav-desktop a::after{
+  content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;
+  background:var(--dorado);transition:width .3s;
+}
+.nav-desktop a:hover, .nav-desktop a.active{color:var(--dorado);}
+.nav-desktop a:hover::after, .nav-desktop a.active::after{width:100%;}
+.header-cta{
+  background:linear-gradient(135deg,var(--dorado),var(--dorado-claro));
+  color:var(--negro);padding:.7rem 1.6rem;border-radius:50px;
+  text-decoration:none;font-weight:600;font-size:.85rem;
+  letter-spacing:.5px;transition:var(--transicion);cursor:pointer;
+  border:none;
+}
+.header-cta:hover{transform:translateY(-2px);box-shadow:var(--sombra-dorada);}
+
+/* ==========================================================
+   BOTTOM NAV (móvil tipo app)
+   ========================================================== */
+.bottom-nav{
+  position:fixed;bottom:0;left:0;width:100%;
+  background:rgba(10,10,10,.95);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-top:1px solid rgba(212,175,55,.25);
+  display:none;
+  justify-content:space-around;align-items:center;
+  padding:.5rem 0 calc(.5rem + env(safe-area-inset-bottom));
+  z-index:200;
+}
+.bottom-nav a{
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  text-decoration:none;color:var(--gris);
+  font-size:.65rem;letter-spacing:.5px;text-transform:uppercase;
+  padding:.4rem .6rem;border-radius:12px;
+  transition:color .3s;min-width:60px;cursor:pointer;
+}
+.bottom-nav a svg{width:22px;height:22px;stroke-width:1.6;}
+.bottom-nav a.active, .bottom-nav a:hover{color:var(--dorado);}
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:.9rem 2rem;border:none;border-radius:50px;
+  font-weight:600;cursor:pointer;text-decoration:none;
+  transition:var(--transicion);font-size:.95rem;
+  letter-spacing:.5px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--dorado),var(--dorado-claro));
+  color:var(--negro);box-shadow:0 6px 20px rgba(212,175,55,.3);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:var(--sombra-dorada);}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none;}
+.btn-outline{
+  background:transparent;color:var(--dorado);
+  border:1.5px solid var(--dorado);
+}
+.btn-outline:hover{background:var(--dorado);color:var(--negro);}
+.btn-ghost{
+  background:rgba(255,255,255,.05);color:var(--blanco);
+  border:1px solid rgba(255,255,255,.1);
+}
+.btn-ghost:hover{background:rgba(255,255,255,.1);}
+
+/* ==========================================================
+   HERO HOME
+   ========================================================== */
+.hero{
+  min-height:100vh;
+  background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.9) 100%),
+    url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920') center/cover;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:120px 5% 80px;
+  position:relative;
+}
+.hero-content{max-width:900px;}
+.hero-eyebrow{
+  color:var(--dorado);font-size:.75rem;letter-spacing:8px;
+  text-transform:uppercase;margin-bottom:1.5rem;
+  display:inline-block;animation:fadeUp .8s ease;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,7vw,5rem);
+  line-height:1.05;font-weight:700;margin-bottom:1.5rem;
+  animation:fadeUp .8s ease .1s backwards;
+}
+.hero h1 span{color:var(--dorado);display:inline-block;font-style:italic;}
+.hero p{
+  color:var(--gris-claro);font-size:clamp(1rem,1.5vw,1.2rem);
+  max-width:600px;margin:0 auto 2.5rem;
+  animation:fadeUp .8s ease .2s backwards;
+}
+.hero-botones{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  animation:fadeUp .8s ease .3s backwards;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.scroll-hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  color:var(--gris);font-size:.7rem;letter-spacing:3px;
+  text-transform:uppercase;animation:bounce 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translate(-50%,0);}50%{transform:translate(-50%,8px);}}
+
+/* ==========================================================
+   SECCIONES
+   ========================================================== */
+.section{padding:6rem 5%;max-width:1400px;margin:0 auto;}
+.section-full{padding:6rem 5%;}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-eyebrow{
+  color:var(--dorado);font-size:.75rem;letter-spacing:6px;
+  text-transform:uppercase;margin-bottom:1rem;display:inline-block;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.15;margin-bottom:1rem;
+}
+.section-title span{color:var(--dorado);font-style:italic;}
+.section-sub{color:var(--gris);max-width:600px;margin:0 auto;}
+
+/* ==========================================================
+   PAGE HEADER (para páginas internas)
+   ========================================================== */
+.page-header{
+  padding:160px 5% 80px;text-align:center;
+  background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(10,10,10,.95)),
+    url('https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=1920') center/cover;
+  border-bottom:1px solid rgba(212,175,55,.2);
+}
+.page-header-eyebrow{
+  color:var(--dorado);font-size:.75rem;letter-spacing:6px;
+  text-transform:uppercase;margin-bottom:1rem;display:inline-block;
+}
+.page-header h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,5vw,4rem);line-height:1.1;
+}
+.page-header h1 span{color:var(--dorado);font-style:italic;}
+.page-header p{color:var(--gris-claro);margin-top:1rem;max-width:600px;margin-left:auto;margin-right:auto;}
+
+/* ==========================================================
+   FEATURES HOME
+   ========================================================== */
+.features-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:2rem;
+}
+.feature{
+  background:var(--negro-card);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:2.5rem 2rem;
+  transition:var(--transicion);text-align:center;
+}
+.feature:hover{
+  border-color:var(--dorado);transform:translateY(-6px);
+  box-shadow:var(--sombra-dorada);
+}
+.feature-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(212,175,55,.1);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.2rem;color:var(--dorado);
+}
+.feature h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.7rem;}
+.feature p{color:var(--gris);font-size:.9rem;}
+
+/* ==========================================================
+   HABITACIONES — Cards
+   ========================================================== */
+.filtros{
+  display:flex;justify-content:center;gap:.7rem;
+  flex-wrap:wrap;margin-bottom:2rem;
+}
+.filtro{
+  background:transparent;border:1px solid var(--borde);
+  color:var(--gris-claro);padding:.6rem 1.6rem;border-radius:30px;
+  cursor:pointer;transition:var(--transicion);font-size:.85rem;
+  letter-spacing:.5px;
+}
+.filtro:hover{border-color:var(--dorado);color:var(--dorado);}
+.filtro.active{background:var(--dorado);color:var(--negro);border-color:var(--dorado);font-weight:600;}
+
+/* Barra de fechas para disponibilidad */
+.barra-fechas{
+  background:var(--negro-card);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:1.2rem 1.6rem;
+  display:flex;flex-wrap:wrap;gap:1rem;align-items:flex-end;
+  justify-content:center;margin-bottom:2.5rem;
+}
+.barra-fechas .campo-fecha{display:flex;flex-direction:column;gap:.3rem;}
+.barra-fechas label{
+  font-size:.72rem;color:var(--gris);letter-spacing:1.5px;
+  text-transform:uppercase;
+}
+.barra-fechas input{
+  padding:.6rem .9rem;background:#0d0d0d;
+  border:1px solid var(--borde);border-radius:var(--radio-sm);
+  color:var(--blanco);font-size:.9rem;
+}
+.barra-fechas input:focus{
+  outline:none;border-color:var(--dorado);
+  box-shadow:0 0 0 3px rgba(212,175,55,.1);
+}
+.barra-fechas .btn{padding:.7rem 1.6rem;font-size:.85rem;}
+
+.grid-habitaciones{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:2rem;
+}
+.hab-card{
+  background:var(--negro-card);border-radius:var(--radio);
+  overflow:hidden;border:1px solid var(--borde);
+  transition:var(--transicion);cursor:pointer;
+  display:flex;flex-direction:column;
+  text-decoration:none;color:inherit;
+}
+.hab-card:hover{
+  border-color:var(--dorado);transform:translateY(-8px);
+  box-shadow:var(--sombra-dorada);
+}
+.hab-img-wrap{position:relative;overflow:hidden;}
+.hab-img-wrap img{
+  width:100%;height:240px;object-fit:cover;
+  transition:transform .6s;
+}
+.hab-card:hover .hab-img-wrap img{transform:scale(1.06);}
+.hab-badge{
+  position:absolute;top:14px;right:14px;
+  padding:.35rem .9rem;border-radius:30px;
+  font-size:.7rem;font-weight:600;letter-spacing:.5px;
+  backdrop-filter:blur(8px);
+}
+.hab-badge.disponible{background:rgba(46,204,113,.85);color:#fff;}
+.hab-badge.ocupada{background:rgba(231,76,60,.85);color:#fff;}
+.hab-badge.consultar{background:rgba(212,175,55,.85);color:#0a0a0a;}
+.hab-piso-badge{
+  position:absolute;top:14px;left:14px;
+  background:rgba(10,10,10,.85);color:var(--dorado);
+  padding:.35rem .9rem;border-radius:30px;
+  font-size:.7rem;font-weight:600;letter-spacing:1px;
+  backdrop-filter:blur(8px);border:1px solid rgba(212,175,55,.4);
+}
+.hab-body{padding:1.6rem;flex:1;display:flex;flex-direction:column;}
+.hab-body h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.4rem;}
+.hab-body .tipo-tag{
+  color:var(--dorado);font-size:.75rem;
+  letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:.8rem;font-weight:600;
+}
+.hab-body p{color:var(--gris);font-size:.88rem;margin-bottom:1.2rem;flex:1;}
+.hab-footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:1rem;border-top:1px solid var(--borde);
+}
+.hab-precio{
+  font-family:'Playfair Display',serif;
+  color:var(--dorado);font-size:1.4rem;font-weight:700;
+}
+.hab-precio small{font-size:.7rem;color:var(--gris);font-weight:400;display:block;letter-spacing:1px;}
+
+/* ==========================================================
+   DETALLE HABITACIÓN — CARRUSEL
+   ========================================================== */
+.carrusel-wrapper{
+  position:relative;border-radius:var(--radio);overflow:hidden;
+  margin-bottom:3rem;background:#0d0d0d;
+}
+.carrusel{
+  display:flex;
+  transition:transform .5s cubic-bezier(.2,.7,.3,1);
+  height:520px;
+}
+.carrusel img{
+  min-width:100%;height:100%;object-fit:cover;cursor:pointer;
+}
+.carrusel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(10,10,10,.7);color:var(--dorado);
+  border:1.5px solid rgba(212,175,55,.4);
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:1.4rem;line-height:1;
+  transition:var(--transicion);z-index:5;backdrop-filter:blur(6px);
+}
+.carrusel-btn:hover{background:var(--dorado);color:var(--negro);}
+.carrusel-prev{left:20px;}
+.carrusel-next{right:20px;}
+.carrusel-indicadores{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  display:flex;gap:.5rem;z-index:5;
+}
+.carrusel-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:rgba(255,255,255,.4);cursor:pointer;
+  transition:var(--transicion);border:none;padding:0;
+}
+.carrusel-dot.active{background:var(--dorado);width:24px;border-radius:6px;}
+
+.detalle-hab-grid{
+  display:grid;grid-template-columns:2fr 1fr;gap:3rem;
+  align-items:start;
+}
+.detalle-hab-info .tipo-tag{
+  color:var(--dorado);font-size:.85rem;
+  letter-spacing:3px;text-transform:uppercase;
+  margin-bottom:1rem;font-weight:600;
+}
+.detalle-hab-info h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2rem,4vw,3rem);
+  line-height:1.1;margin-bottom:1rem;
+}
+.detalle-hab-info .descripcion{
+  color:var(--gris-claro);font-size:1rem;margin-bottom:2rem;line-height:1.8;
+}
+.amenities-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem;margin-bottom:1rem;color:var(--dorado);
+}
+.amenities{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:.9rem;margin-bottom:2rem;
+}
+.amenity{
+  display:flex;align-items:center;gap:.7rem;
+  color:var(--gris-claro);font-size:.9rem;
+  padding:.7rem 1rem;background:var(--negro-card);
+  border-radius:var(--radio-sm);border:1px solid var(--borde);
+}
+.amenity svg{color:var(--dorado);flex-shrink:0;}
+
+.reserva-panel{
+  background:var(--negro-card);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:2rem;
+  position:sticky;top:120px;
+}
+.reserva-panel .precio-tag{
+  font-family:'Playfair Display',serif;
+  color:var(--dorado);font-size:2rem;font-weight:700;line-height:1;
+}
+.reserva-panel .por-noche{
+  color:var(--gris);font-size:.8rem;letter-spacing:1px;
+  text-transform:uppercase;margin-bottom:1.5rem;
+}
+.reserva-panel .info-item{
+  display:flex;justify-content:space-between;
+  padding:.8rem 0;border-bottom:1px solid var(--borde);
+  font-size:.9rem;color:var(--gris-claro);
+}
+.reserva-panel .info-item strong{color:var(--blanco);font-weight:500;}
+.reserva-panel .btn{margin-top:1.5rem;width:100%;}
+.reserva-panel .nota{
+  text-align:center;font-size:.75rem;color:var(--gris);margin-top:1rem;
+}
+
+/* ==========================================================
+   FORMULARIO DE RESERVA
+   ========================================================== */
+.form-reserva{
+  margin-top:1.5rem;padding-top:1.5rem;
+  border-top:1px solid var(--borde);
+}
+.form-reserva h4{
+  font-family:'Playfair Display',serif;
+  color:var(--dorado);font-size:1.1rem;
+  margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;
+}
+.form-reserva .campo{margin-bottom:.9rem;}
+.form-reserva label{
+  display:block;font-size:.78rem;color:var(--gris-claro);
+  letter-spacing:.5px;margin-bottom:.35rem;
+}
+.form-reserva input{
+  width:100%;padding:.7rem .9rem;
+  background:#0d0d0d;border:1px solid var(--borde);
+  border-radius:var(--radio-sm);color:var(--blanco);
+  font-size:.9rem;transition:var(--transicion);
+}
+.form-reserva input:focus{
+  outline:none;border-color:var(--dorado);
+  box-shadow:0 0 0 3px rgba(212,175,55,.1);
+}
+.form-reserva .btn{width:100%;margin-top:.5rem;}
+
+/* Estado de disponibilidad en ficha */
+.estado-disponibilidad{
+  padding:.8rem 1rem;border-radius:var(--radio-sm);
+  font-size:.85rem;margin-bottom:1rem;text-align:center;
+  font-weight:600;letter-spacing:.3px;
+}
+.estado-disponibilidad.libre{background:rgba(46,204,113,.12);color:var(--verde);border:1px solid rgba(46,204,113,.35);}
+.estado-disponibilidad.ocupada{background:rgba(231,76,60,.12);color:var(--rojo);border:1px solid rgba(231,76,60,.35);}
+.estado-disponibilidad.consultar{background:rgba(212,175,55,.12);color:var(--dorado);border:1px solid rgba(212,175,55,.35);}
+
+/* ==========================================================
+   CROQUIS PROFESIONAL
+   ========================================================== */
+.plano-container{
+  background:#0d0d0d;border:1px solid var(--borde);
+  border-radius:var(--radio);padding:3rem 2rem;
+  max-width:1000px;margin:0 auto;overflow:hidden;
+}
+.plano-titulo{
+  text-align:center;margin-bottom:2rem;
+  color:var(--gris);font-size:.75rem;
+  letter-spacing:4px;text-transform:uppercase;
+}
+.plano{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  grid-template-rows:auto auto auto;
+  gap:6px;
+  border:3px solid var(--dorado);
+  padding:20px;border-radius:6px;
+  background:
+    repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(212,175,55,.015) 20px,rgba(212,175,55,.015) 40px),
+    #0a0a0a;
+  min-height:300px;
+}
+.plano::after{
+  content:'PASILLO';
+  grid-column:1/6;grid-row:2/3;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(212,175,55,.25);font-size:.65rem;letter-spacing:12px;
+  border-top:1px dashed rgba(212,175,55,.2);
+  border-bottom:1px dashed rgba(212,175,55,.2);
+  min-height:40px;pointer-events:none;
+}
+.hab-plano{
+  background:#141414;border:2px solid #2a2a2a;border-radius:4px;
+  padding:1rem .5rem;cursor:pointer;transition:var(--transicion);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;min-height:100px;position:relative;text-align:center;
+  font-weight:600;
+}
+.hab-plano::before{
+  content:'';position:absolute;top:0;left:0;width:8px;height:8px;
+  border-top:2px solid rgba(255,255,255,.15);
+  border-left:2px solid rgba(255,255,255,.15);
+}
+.hab-plano.disponible{
+  border-color:rgba(46,204,113,.6);
+  background:rgba(46,204,113,.06);
+}
+.hab-plano.disponible:hover{
+  background:rgba(46,204,113,.2);border-color:var(--verde);
+  transform:scale(1.03);box-shadow:0 0 20px rgba(46,204,113,.3);
+}
+.hab-plano.ocupada{
+  border-color:rgba(231,76,60,.6);
+  background:rgba(231,76,60,.06);
+  cursor:not-allowed;opacity:.7;
+}
+.hab-plano .num{font-size:1.15rem;color:var(--blanco);}
+.hab-plano.disponible .num{color:#7fe4a8;}
+.hab-plano.ocupada .num{color:#ff8b7f;}
+.hab-plano .tipo{
+  font-size:.6rem;color:var(--gris);
+  letter-spacing:1px;text-transform:uppercase;font-weight:400;
+}
+.hab-plano .icono{position:absolute;top:5px;right:5px;font-size:.65rem;opacity:.5;}
+.escaleras{
+  grid-column:5/6;grid-row:1/2;
+  background:repeating-linear-gradient(0deg,#1c1c1c,#1c1c1c 6px,#2a2a2a 6px,#2a2a2a 7px);
+  border:2px solid #333;border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gris);font-size:.6rem;letter-spacing:2px;
+  min-height:100px;text-transform:uppercase;
+}
+.plano-leyenda{
+  display:flex;justify-content:center;gap:2rem;
+  margin-top:2rem;flex-wrap:wrap;font-size:.85rem;color:var(--gris-claro);
+}
+.plano-leyenda div{display:flex;align-items:center;gap:.6rem;}
+.dot{width:14px;height:14px;border-radius:3px;display:inline-block;}
+.dot.disponible{background:rgba(46,204,113,.5);border:1.5px solid var(--verde);}
+.dot.ocupada{background:rgba(231,76,60,.5);border:1.5px solid var(--rojo);}
+.dot.area{border:1.5px dashed rgba(212,175,55,.4);background:transparent;}
+
+.selector-piso{
+  display:flex;justify-content:center;gap:.6rem;
+  margin-bottom:2rem;flex-wrap:wrap;
+}
+.piso-btn{
+  background:transparent;border:1.5px solid var(--borde);
+  color:var(--gris-claro);padding:.7rem 2rem;
+  border-radius:var(--radio-sm);cursor:pointer;
+  font-weight:600;transition:var(--transicion);font-size:.9rem;
+  letter-spacing:1px;
+}
+.piso-btn:hover{border-color:var(--dorado);color:var(--dorado);}
+.piso-btn.active{background:var(--dorado);color:var(--negro);border-color:var(--dorado);}
+
+/* ==========================================================
+   RESTAURANTE — CARRITO FLOTANTE STICKY
+   ========================================================== */
+.menu-tabs-sticky{
+  position:sticky;top:80px;z-index:50;
+  background:rgba(10,10,10,.96);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(212,175,55,.2);
+  padding:1rem 5%;
+  margin-bottom:2rem;
+  display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;
+}
+.menu-tabs-sticky .tab{
+  background:transparent;border:1px solid var(--borde);
+  color:var(--gris-claro);padding:.7rem 1.8rem;
+  border-radius:50px;cursor:pointer;
+  transition:var(--transicion);font-size:.85rem;
+  letter-spacing:1px;text-transform:uppercase;
+}
+.menu-tabs-sticky .tab:hover{border-color:var(--dorado);color:var(--dorado);}
+.menu-tabs-sticky .tab.active{background:var(--dorado);color:var(--negro);border-color:var(--dorado);font-weight:600;}
+
+.grid-menu{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:1.8rem;margin-bottom:4rem;
+}
+.plato{
+  background:var(--negro-card);border-radius:var(--radio);
+  overflow:hidden;border:1px solid var(--borde);
+  transition:var(--transicion);
+}
+.plato:hover{border-color:var(--dorado);transform:translateY(-5px);}
+.plato img{width:100%;height:180px;object-fit:cover;}
+.plato-body{padding:1.3rem;}
+.plato-body h4{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:.4rem;}
+.plato-body .plato-desc{
+  color:var(--gris);font-size:.83rem;
+  margin-bottom:1rem;min-height:2.6em;line-height:1.5;
+}
+.plato-footer{display:flex;justify-content:space-between;align-items:center;}
+.plato-precio{
+  color:var(--dorado);font-weight:700;font-size:1.2rem;
+  font-family:'Playfair Display',serif;
+}
+.btn-agregar{
+  background:var(--dorado);color:var(--negro);
+  border:none;padding:.5rem 1.2rem;border-radius:30px;
+  cursor:pointer;font-weight:600;font-size:.8rem;
+  transition:var(--transicion);letter-spacing:.5px;
+}
+.btn-agregar:hover{background:var(--dorado-claro);transform:scale(1.05);}
+
+/* ===== BOTÓN CARRITO SUPERIOR (cubiertos) ===== */
+.carrito-topbar{
+  position:fixed;top:84px;right:24px;
+  background:linear-gradient(135deg,var(--dorado),var(--dorado-claro));
+  color:var(--negro);border:none;border-radius:50px;
+  padding:.75rem 1.2rem;display:flex;align-items:center;gap:.6rem;
+  cursor:pointer;font-weight:700;font-size:.9rem;
+  box-shadow:0 10px 30px rgba(212,175,55,.4);
+  z-index:3000;transition:var(--transicion);
+  font-family:'Poppins',sans-serif;
+}
+.carrito-topbar:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 15px 40px rgba(212,175,55,.6);}
+.carrito-topbar .carrito-count{
+  background:var(--negro);color:var(--dorado);
+  border-radius:50%;width:24px;height:24px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;font-weight:700;
+}
+.carrito-topbar .carrito-label{font-size:.75rem;letter-spacing:1px;text-transform:uppercase;}
+.carrito-topbar svg{width:22px;height:22px;}
+
+/* ===== PANEL LATERAL DEL CARRITO ===== */
+.carrito-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.7);
+  z-index:3500;opacity:0;visibility:hidden;
+  transition:opacity .35s, visibility .35s;
+  backdrop-filter:blur(4px);
+}
+.carrito-overlay.active{opacity:1;visibility:visible;}
+
+.carrito-lateral{
+  position:fixed;top:0;right:0;height:100vh;width:420px;
+  max-width:92vw;background:var(--negro-suave);
+  border-left:1px solid rgba(212,175,55,.3);
+  z-index:3600;transform:translateX(100%);
+  transition:transform .4s cubic-bezier(.2,.7,.3,1);
+  display:flex;flex-direction:column;
+  box-shadow:-20px 0 60px rgba(0,0,0,.6);
+}
+.carrito-lateral.active{transform:translateX(0);}
+.carrito-lateral-header{
+  padding:1.5rem 1.5rem 1rem;
+  border-bottom:1px solid var(--borde);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.carrito-lateral-header h3{
+  font-family:'Playfair Display',serif;
+  color:var(--dorado);font-size:1.3rem;
+  display:flex;align-items:center;gap:.6rem;
+}
+.carrito-lateral-header h3 svg{width:24px;height:24px;}
+.carrito-cerrar{
+  background:none;border:none;color:var(--gris);
+  font-size:1.8rem;cursor:pointer;line-height:1;
+  transition:var(--transicion);
+}
+.carrito-cerrar:hover{color:var(--dorado);transform:rotate(90deg);}
+.carrito-lateral-body{
+  flex:1;overflow-y:auto;padding:1.2rem 1.5rem;
+}
+.carrito-lateral-footer{
+  padding:1.2rem 1.5rem calc(1.2rem + env(safe-area-inset-bottom));
+  border-top:1px solid var(--borde);
+  background:var(--negro-card);
+}
+.carrito-lateral .item-pedido{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.9rem 0;border-bottom:1px solid var(--borde);
+  gap:.6rem;font-size:.9rem;
+}
+.carrito-lateral .item-pedido-nombre{flex:1;color:var(--gris-claro);}
+.carrito-lateral .controles{display:flex;align-items:center;gap:.4rem;}
+.carrito-lateral .cant-btn{
+  background:var(--dorado);color:var(--negro);
+  border:none;border-radius:50%;width:26px;height:26px;
+  cursor:pointer;font-weight:700;font-size:1rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--transicion);
+}
+.carrito-lateral .cant-btn:hover{background:var(--dorado-claro);}
+.carrito-lateral .cant-num{min-width:24px;text-align:center;font-weight:600;}
+.carrito-lateral .btn-quitar{
+  background:rgba(231,76,60,.15);color:var(--rojo);
+  border:1px solid rgba(231,76,60,.4);
+  border-radius:50%;width:26px;height:26px;
+  cursor:pointer;font-size:1rem;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:var(--transicion);
+}
+.carrito-lateral .btn-quitar:hover{background:var(--rojo);color:#fff;}
+.carrito-vacio{color:var(--gris);font-style:italic;font-size:.9rem;text-align:center;padding:2rem 0;}
+.carrito-lateral .total-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.5rem 0 1rem;
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;color:var(--dorado);font-weight:700;
+}
+.carrito-lateral .total-row small{
+  font-size:.85rem;color:var(--gris);font-weight:400;
+  font-family:'Poppins';letter-spacing:1px;text-transform:uppercase;
+}
+.carrito-lateral label{
+  display:block;margin-bottom:.4rem;color:var(--gris-claro);
+  font-size:.85rem;letter-spacing:.5px;
+}
+.carrito-lateral input{
+  width:100%;padding:.8rem 1rem;background:#0d0d0d;
+  border:1px solid var(--borde);border-radius:var(--radio-sm);
+  color:var(--blanco);margin-bottom:1rem;
+  transition:var(--transicion);
+}
+.carrito-lateral input:focus{
+  outline:none;border-color:var(--dorado);
+  box-shadow:0 0 0 3px rgba(212,175,55,.1);
+}
+.carrito-lateral .btn{width:100%;}
+
+/* ==========================================================
+   NOSOTROS
+   ========================================================== */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+.about-img{border-radius:var(--radio);overflow:hidden;box-shadow:var(--sombra);}
+.about-img img{width:100%;height:500px;object-fit:cover;}
+.about-text h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,2.5rem);
+  line-height:1.2;margin-bottom:1.5rem;
+}
+.about-text h2 span{color:var(--dorado);font-style:italic;}
+.about-text p{color:var(--gris-claro);margin-bottom:1.2rem;line-height:1.85;}
+
+.stats-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:2rem;margin-top:4rem;text-align:center;
+}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;color:var(--dorado);font-weight:700;
+  line-height:1;margin-bottom:.4rem;
+}
+.stat-label{color:var(--gris);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;}
+
+.valores-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2rem;margin-top:3rem;
+}
+.valor{
+  background:var(--negro-card);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:2rem;transition:var(--transicion);
+}
+.valor:hover{border-color:var(--dorado);}
+.valor h3{
+  font-family:'Playfair Display',serif;font-size:1.3rem;
+  margin-bottom:.7rem;color:var(--dorado);
+}
+.valor p{color:var(--gris);font-size:.9rem;}
+
+/* ==========================================================
+   GALERÍA DE INSTALACIONES
+   ========================================================== */
+.galeria-instalaciones{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:220px;
+  gap:1rem;
+}
+.galeria-item{
+  position:relative;border-radius:var(--radio);
+  overflow:hidden;cursor:pointer;
+  border:1px solid var(--borde);
+  transition:var(--transicion);
+}
+.galeria-item:hover{
+  border-color:var(--dorado);
+  box-shadow:var(--sombra-dorada);
+}
+.galeria-item img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s;
+}
+.galeria-item:hover img{transform:scale(1.08);}
+.galeria-item.grande{
+  grid-column:span 2;
+  grid-row:span 2;
+}
+.galeria-item .galeria-caption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:1.4rem 1.2rem .9rem;
+  background:linear-gradient(to top,rgba(0,0,0,.92),rgba(0,0,0,.35) 60%,transparent);
+  color:var(--blanco);
+}
+.galeria-item .galeria-caption h4{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;margin-bottom:.15rem;
+}
+.galeria-item .galeria-caption p{
+  color:var(--gris-claro);font-size:.75rem;
+  letter-spacing:.5px;margin:0;
+}
+
+/* ==========================================================
+   CONTACTO
+   ========================================================== */
+.contacto-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;}
+.contacto-info-card{
+  background:var(--negro-card);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:2.5rem;
+}
+.contacto-item{
+  display:flex;gap:1rem;padding:1.2rem 0;
+  border-bottom:1px solid var(--borde);
+}
+.contacto-item:last-child{border-bottom:none;}
+.contacto-item-icon{
+  width:48px;height:48px;flex-shrink:0;
+  background:rgba(212,175,55,.1);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--dorado);
+}
+.contacto-item h4{
+  font-size:.75rem;color:var(--gris);letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:.3rem;
+}
+.contacto-item p{color:var(--gris-claro);font-size:1rem;}
+
+.form-card{
+  background:var(--negro-card);border:1px solid var(--borde);
+  border-radius:var(--radio);padding:2.5rem;
+}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{
+  display:block;margin-bottom:.5rem;color:var(--gris-claro);
+  font-size:.85rem;letter-spacing:.5px;
+}
+.form-group input, .form-group textarea{
+  width:100%;padding:.9rem 1rem;background:#0d0d0d;
+  border:1px solid var(--borde);border-radius:var(--radio-sm);
+  color:var(--blanco);transition:var(--transicion);
+}
+.form-group input:focus, .form-group textarea:focus{
+  outline:none;border-color:var(--dorado);
+  box-shadow:0 0 0 3px rgba(212,175,55,.1);
+}
+.form-group textarea{resize:vertical;min-height:120px;}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.footer{
+  background:#050505;border-top:1px solid rgba(212,175,55,.15);
+  padding:4rem 5% 2rem;
+}
+.footer-inner{
+  max-width:1400px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:3rem;margin-bottom:3rem;
+}
+.footer-brand h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;letter-spacing:3px;margin-bottom:.4rem;
+}
+.footer-brand h3 span{color:var(--dorado);}
+.footer-brand .footer-sub{
+  font-size:.6rem;letter-spacing:4px;color:var(--gris);
+  text-transform:uppercase;margin-bottom:1rem;
+}
+.footer-brand p{color:var(--gris);font-size:.9rem;max-width:320px;}
+.footer-col h4{
+  color:var(--dorado);font-size:.8rem;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:1.2rem;
+}
+.footer-col a, .footer-col p{
+  display:block;color:var(--gris);text-decoration:none;
+  font-size:.88rem;margin-bottom:.7rem;transition:color .3s;
+  cursor:pointer;
+}
+.footer-col a:hover{color:var(--dorado);}
+.footer-bottom{
+  max-width:1400px;margin:0 auto;
+  padding-top:2rem;border-top:1px solid var(--borde);
+  text-align:center;color:var(--gris);font-size:.8rem;
+  letter-spacing:.5px;
+}
+
+/* ==========================================================
+   MODAL
+   ========================================================== */
+.modal{
+  display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.92);z-index:3000;
+  align-items:center;justify-content:center;padding:1rem;
+  backdrop-filter:blur(4px);
+}
+.modal.active{display:flex;animation:fadeIn .25s;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.modal-content{
+  background:var(--negro-suave);padding:2.5rem;border-radius:var(--radio);
+  border:1px solid var(--dorado);max-width:480px;width:100%;
+  position:relative;text-align:center;
+  animation:modalIn .35s cubic-bezier(.2,.7,.3,1);
+}
+@keyframes modalIn{
+  from{opacity:0;transform:scale(.95) translateY(20px);}
+  to{opacity:1;transform:scale(1) translateY(0);}
+}
+.modal-content h3{
+  font-family:'Playfair Display',serif;
+  color:var(--dorado);margin-bottom:1rem;font-size:1.5rem;
+}
+.modal-content p{color:var(--gris-claro);margin-bottom:1rem;}
+.modal-content .precio{
+  color:var(--dorado-claro);font-size:1.6rem;
+  font-weight:700;font-family:'Playfair Display',serif;
+}
+.modal-close{
+  position:absolute;top:12px;right:16px;
+  font-size:1.8rem;color:var(--dorado);cursor:pointer;
+  background:none;border:none;line-height:1;
+  transition:transform .3s;
+}
+.modal-close:hover{transform:rotate(90deg);}
+
+.lightbox{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.98);
+  z-index:4000;align-items:center;justify-content:center;padding:2rem;
+}
+.lightbox.active{display:flex;animation:fadeIn .3s;}
+.lightbox img{max-width:95vw;max-height:90vh;object-fit:contain;}
+.lightbox-close{
+  position:absolute;top:20px;right:30px;
+  font-size:2.5rem;color:var(--dorado);cursor:pointer;
+  background:none;border:none;line-height:1;
+}
+
+/* ==========================================================
+   TOAST
+   ========================================================== */
+.toast{
+  position:fixed;bottom:100px;right:30px;
+  background:var(--dorado);color:var(--negro);
+  padding:1rem 1.5rem;border-radius:var(--radio-sm);
+  font-weight:600;z-index:5000;
+  opacity:0;transform:translateY(20px);
+  transition:all .35s;pointer-events:none;
+  box-shadow:0 15px 40px rgba(212,175,55,.4);
+  max-width:calc(100% - 40px);font-size:.9rem;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width:1024px){
+  .nav-desktop{display:none;}
+  .header-cta{display:none;}
+  .bottom-nav{display:flex;}
+  body{padding-bottom:80px;}
+  .detalle-hab-grid{grid-template-columns:1fr;}
+  .reserva-panel{position:static;}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .contacto-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:2rem;}
+  .carrusel{height:400px;}
+  .plano{grid-template-columns:repeat(3,1fr);}
+  .escaleras{grid-column:3/4;}
+  .plano::after{grid-column:1/4;}
+  .menu-tabs-sticky{top:70px;}
+  .carrito-topbar{top:74px;right:16px;}
+  .galeria-instalaciones{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px;}
+  .galeria-item.grande{grid-column:span 2;grid-row:span 1;}
+}
+@media (max-width:640px){
+  .header-inner{padding:.9rem 5%;}
+  .brand{font-size:1.15rem;letter-spacing:2px;}
+  .brand .subtitulo{font-size:.45rem;letter-spacing:3px;}
+  .hero{padding:100px 5% 60px;}
+  .section, .section-full{padding:4rem 5%;}
+  .page-header{padding:130px 5% 60px;}
+  .grid-habitaciones, .grid-menu{gap:1.3rem;}
+  .plano-container{padding:1.5rem 1rem;}
+  .plano{grid-template-columns:repeat(2,1fr);gap:4px;padding:12px;}
+  .plano::after{grid-column:1/3;min-height:30px;font-size:.5rem;letter-spacing:6px;}
+  .hab-plano{min-height:80px;padding:.6rem .3rem;}
+  .hab-plano .num{font-size:.95rem;}
+  .hab-plano .tipo{font-size:.5rem;}
+  .escaleras{display:none;}
+  .footer-inner{grid-template-columns:1fr;}
+  .footer{padding:3rem 5% 2rem;}
+  .amenities{grid-template-columns:1fr;}
+  .toast{left:20px;right:20px;bottom:90px;}
+  .bottom-nav a{font-size:.6rem;min-width:auto;}
+  .bottom-nav a svg{width:20px;height:20px;}
+  .carrusel{height:280px;}
+  .carrusel-btn{width:38px;height:38px;font-size:1.1rem;}
+  .modal-content{padding:2rem 1.5rem;}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .stat-num{font-size:2.2rem;}
+  .carrito-topbar{top:68px;right:12px;padding:.6rem .9rem;font-size:.8rem;}
+  .carrito-topbar .carrito-count{width:20px;height:20px;font-size:.7rem;}
+  .carrito-topbar .carrito-label{display:none;}
+  .menu-tabs-sticky{top:60px;padding:.8rem 5%;}
+  .menu-tabs-sticky .tab{padding:.6rem 1.2rem;font-size:.75rem;}
+  .barra-fechas{padding:1rem;gap:.7rem;}
+  .barra-fechas .campo-fecha{flex:1 1 40%;}
+  .barra-fechas input{width:100%;}
+  .galeria-instalaciones{grid-template-columns:1fr;grid-auto-rows:220px;}
+  .galeria-item.grande{grid-column:span 1;grid-row:span 1;}
+}
+
+/* ==========================================================
+   OVERLAY Y PANEL DEL CARRITO
+   ========================================================== */
+.carrito-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:3500;opacity:0;visibility:hidden;transition:opacity .35s, visibility .35s;backdrop-filter:blur(4px);}
+.carrito-overlay.active{opacity:1;visibility:visible;}
+
+.carrito-lateral{position:fixed;top:0;right:0;height:100vh;width:420px;max-width:92vw;background:var(--negro-suave);border-left:1px solid rgba(212,175,55,.3);z-index:3600;transform:translateX(100%);transition:transform .4s cubic-bezier(.2,.7,.3,1);display:flex;flex-direction:column;box-shadow:-20px 0 60px rgba(0,0,0,.6);}
+.carrito-lateral.active{transform:translateX(0);}
+.carrito-lateral-header{padding:1.5rem 1.5rem 1rem;border-bottom:1px solid var(--borde);display:flex;justify-content:space-between;align-items:center;}
+.carrito-lateral-header h3{font-family:'Playfair Display',serif;color:var(--dorado);font-size:1.3rem;display:flex;align-items:center;gap:.6rem;}
+.carrito-lateral-header h3 svg{width:24px;height:24px;}
+.carrito-cerrar{background:none;border:none;color:var(--gris);font-size:1.8rem;cursor:pointer;line-height:1;transition:var(--transicion);}
+.carrito-cerrar:hover{color:var(--dorado);transform:rotate(90deg);}
+.carrito-lateral-body{flex:1;overflow-y:auto;padding:1.2rem 1.5rem;}
+.carrito-lateral-footer{padding:1.2rem 1.5rem calc(1.2rem + env(safe-area-inset-bottom));border-top:1px solid var(--borde);background:var(--negro-card);}
+.carrito-lateral .item-pedido{display:flex;justify-content:space-between;align-items:center;padding:.9rem 0;border-bottom:1px solid var(--borde);gap:.6rem;font-size:.9rem;}
+.carrito-lateral .item-pedido-nombre{flex:1;color:var(--gris-claro);}
+.carrito-lateral .controles{display:flex;align-items:center;gap:.4rem;}
+.carrito-lateral .cant-btn{background:var(--dorado);color:var(--negro);border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-weight:700;font-size:1rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:var(--transicion);}
+.carrito-lateral .cant-btn:hover{background:var(--dorado-claro);}
+.carrito-lateral .cant-num{min-width:24px;text-align:center;font-weight:600;}
+.carrito-lateral .btn-quitar{background:rgba(231,76,60,.15);color:var(--rojo);border:1px solid rgba(231,76,60,.4);border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:1rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:var(--transicion);}
+.carrito-lateral .btn-quitar:hover{background:var(--rojo);color:#fff;}
+.carrito-vacio{color:var(--gris);font-style:italic;font-size:.9rem;text-align:center;padding:2rem 0;}
+.carrito-lateral .total-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0 1rem;font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--dorado);font-weight:700;}
+.carrito-lateral .total-row small{font-size:.85rem;color:var(--gris);font-weight:400;font-family:'Poppins';letter-spacing:1px;text-transform:uppercase;}
+.carrito-lateral label{display:block;margin-bottom:.4rem;color:var(--gris-claro);font-size:.85rem;letter-spacing:.5px;}
+.carrito-lateral input{width:100%;padding:.8rem 1rem;background:#0d0d0d;border:1px solid var(--borde);border-radius:var(--radio-sm);color:var(--blanco);margin-bottom:1rem;transition:var(--transicion);}
+.carrito-lateral input:focus{outline:none;border-color:var(--dorado);box-shadow:0 0 0 3px rgba(212,175,55,.1);}
+.carrito-lateral .btn{width:100%;}
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" onclick="nav('home')">
+      V <span>REY</span> HOTEL
+      <span class="subtitulo">Hotel de Lujo</span>
+    </a>
+    <nav class="nav-desktop">
+      <a data-page="home" onclick="nav('home')">Inicio</a>
+      <a data-page="habitaciones" onclick="nav('habitaciones')">Habitaciones</a>
+      <a data-page="restaurante" onclick="nav('restaurante')">Restaurante</a>
+      <a data-page="nosotros" onclick="nav('nosotros')">Nosotros</a>
+      <a data-page="contacto" onclick="nav('contacto')">Contacto</a>
+    </nav>
+    <button class="header-cta" onclick="nav('habitaciones')">Reservar</button>
+  </div>
+</header>
+
+<!-- ============================================================
+     PÁGINA: HOME
+     ============================================================ -->
+<div class="page" id="page-home">
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Bienvenido a</span>
+      <h1>Vive el lujo<br>en <span>V REY HOTEL</span></h1>
+      <p>Un hotel de lujo donde cada detalle ha sido diseñado para ofrecerte una experiencia inolvidable.</p>
+      <div class="hero-botones">
+        <button class="btn btn-primary" onclick="nav('habitaciones')">Reservar habitación</button>
+        <button class="btn btn-outline" onclick="nav('restaurante')">Ver restaurante</button>
+      </div>
+    </div>
+    <div class="scroll-hint">↓ Descubre más</div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Experiencia</span>
+      <h2 class="section-title">Mucho más que <span>un hotel</span></h2>
+      <p class="section-sub">Descubre los servicios que hacen de V REY HOTEL un destino único.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+        </div>
+        <h3>16 Habitaciones</h3>
+        <p>Distribuidas en 4 pisos, todas diseñadas con estilo único y máximo confort.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18M5 11V7a2 2 0 012-2h10a2 2 0 012 2v4M5 11v8a1 1 0 001 1h12a1 1 0 001-1v-8"/></svg>
+        </div>
+        <h3>Restaurante Gourmet</h3>
+        <p>Alta cocina con ingredientes locales. Pide a tu habitación con un toque.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Servicio 24/7</h3>
+        <p>Atención personalizada en todo momento. Tu confort es nuestra prioridad.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+        </div>
+        <h3>Ubicación Privilegiada</h3>
+        <p>En el corazón de la ciudad, cerca de los principales atractivos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-full" style="background:var(--negro-suave);">
+    <div class="section-header">
+      <span class="section-eyebrow">Habitaciones</span>
+      <h2 class="section-title">Elige tu <span>refugio</span></h2>
+      <p class="section-sub">Desde acogedoras habitaciones estándar hasta suites presidenciales.</p>
+    </div>
+    <div class="grid-habitaciones" id="gridHomeHabs" style="max-width:1400px;margin:0 auto;"></div>
+    <div style="text-align:center;margin-top:3rem;">
+      <button class="btn btn-primary" onclick="nav('habitaciones')">Ver todas las habitaciones</button>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PÁGINA: HABITACIONES
+     ============================================================ -->
+<div class="page" id="page-habitaciones">
+  <section class="page-header">
+    <span class="page-header-eyebrow">Alojamiento</span>
+    <h1>Nuestras <span>habitaciones</span></h1>
+    <p>Desde confortables habitaciones estándar hasta nuestra exclusiva suite presidencial.</p>
+  </section>
+
+  <section class="section">
+    <!-- Barra de fechas para consultar disponibilidad -->
+    <div class="barra-fechas" id="barraFechas">
+      <div class="campo-fecha">
+        <label for="fechaEntrada">Entrada</label>
+        <input type="date" id="fechaEntrada">
+      </div>
+      <div class="campo-fecha">
+        <label for="fechaSalida">Salida</label>
+        <input type="date" id="fechaSalida">
+      </div>
+      <button class="btn btn-primary" id="btnConsultarFechas">Consultar disponibilidad</button>
+      <button class="btn btn-ghost" id="btnLimpiarFechas">Limpiar</button>
+    </div>
+
+    <div class="filtros" id="filtros"></div>
+    <div class="grid-habitaciones" id="gridHabitaciones"></div>
+  </section>
+
+  <section class="section-full" style="background:var(--negro-suave);">
+    <div class="section-header">
+      <span class="section-eyebrow">Plano del hotel</span>
+      <h2 class="section-title">Ubica tu <span>habitación</span></h2>
+      <p class="section-sub">Explora el plano de cada piso del hotel V REY HOTEL.</p>
+    </div>
+    <div class="selector-piso" id="selectorPiso"></div>
+    <div class="plano-container">
+      <div class="plano-titulo">PLANO — PISO <span id="planoPisoLabel">1</span></div>
+      <div class="plano" id="croquis"></div>
+    </div>
+    <div class="plano-leyenda">
+      <div><span class="dot disponible"></span> Disponible</div>
+      <div><span class="dot ocupada"></span> Ocupada</div>
+      <div><span class="dot area"></span> Pasillo</div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PÁGINA: DETALLE HABITACIÓN (dinámica)
+     ============================================================ -->
+<div class="page" id="page-habitacion">
+  <section class="section" style="padding-top:140px;">
+    <div class="carrusel-wrapper" id="carruselWrapper">
+      <div class="carrusel" id="carruselHab"></div>
+      <button class="carrusel-btn carrusel-prev" id="carruselPrev">‹</button>
+      <button class="carrusel-btn carrusel-next" id="carruselNext">›</button>
+      <div class="carrusel-indicadores" id="carruselDots"></div>
+    </div>
+    <div class="detalle-hab-grid">
+      <div class="detalle-hab-info">
+        <div class="tipo-tag" id="habTipo"></div>
+        <h1 id="habTitulo"></h1>
+        <p class="descripcion" id="habDescripcion"></p>
+        <h3 class="amenities-titulo">Servicios incluidos</h3>
+        <div class="amenities" id="habAmenities"></div>
+        <button class="btn btn-outline" onclick="nav('habitaciones')" style="margin-top:1rem;">← Volver a habitaciones</button>
+      </div>
+      <aside class="reserva-panel">
+        <div class="precio-tag" id="habPrecio"></div>
+        <div class="por-noche">por noche (Bs.)</div>
+        <div class="info-item"><span>Camas</span><strong id="infoCamas"></strong></div>
+        <div class="info-item"><span>Capacidad</span><strong id="infoCapacidad"></strong></div>
+        <div class="info-item"><span>Tamaño</span><strong id="infoTamano"></strong></div>
+        <div class="info-item"><span>Ubicación</span><strong id="infoPiso"></strong></div>
+        <div class="info-item"><span>Estado actual</span><strong id="infoEstado"></strong></div>
+
+        <!-- Estado de disponibilidad según fechas -->
+        <div class="estado-disponibilidad" id="estadoDisponibilidad" style="display:none;"></div>
+
+        <!-- FORMULARIO DE RESERVA -->
+        <div class="form-reserva" id="formReserva">
+          <h4>📋 Datos de reserva</h4>
+          <div class="campo">
+            <label for="resNombre">Nombre completo *</label>
+            <input type="text" id="resNombre" placeholder="Tu nombre">
+          </div>
+          <div class="campo">
+            <label for="resEmail">Email</label>
+            <input type="email" id="resEmail" placeholder="tucorreo@ejemplo.com">
+          </div>
+          <div class="campo">
+            <label for="resLlegada">Fecha de llegada</label>
+            <input type="date" id="resLlegada">
+          </div>
+          <div class="campo">
+            <label for="resSalida">Fecha de salida</label>
+            <input type="date" id="resSalida">
+          </div>
+          <div class="campo">
+            <label for="resPersonas">Número de personas</label>
+            <input type="number" id="resPersonas" min="1" max="6" value="2">
+          </div>
+          <button class="btn btn-primary" id="btnReservar">Reservar ahora</button>
+          <p class="nota">Serás dirigido a WhatsApp para confirmar tu reserva</p>
+        </div>
+        <div id="reservaOcupada" style="display:none;text-align:center;padding:1rem;color:var(--rojo);font-weight:600;">
+          Habitación no disponible en las fechas seleccionadas
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PÁGINA: RESTAURANTE
+     ============================================================ -->
+<div class="page" id="page-restaurante">
+  <section class="page-header">
+    <span class="page-header-eyebrow">Gastronomía</span>
+    <h1>Restaurante <span>V REY</span></h1>
+    <p>Alta cocina con ingredientes frescos. Pide a tu habitación con un clic.</p>
+  </section>
+
+  <div class="menu-tabs-sticky" id="menuTabs"></div>
+
+  <section class="section" style="padding-top:2rem;">
+    <div class="grid-menu" id="gridMenu"></div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PÁGINA: NOSOTROS
+     ============================================================ -->
+<div class="page" id="page-nosotros">
+  <section class="page-header">
+    <span class="page-header-eyebrow">Nuestra historia</span>
+    <h1>Sobre <span>V REY HOTEL</span></h1>
+    <p>Un proyecto nacido del amor por la hospitalidad y el diseño.</p>
+  </section>
+
+  <section class="section">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800" alt="V REY HOTEL">
+      </div>
+      <div class="about-text">
+        <h2>Un hotel de lujo con <span>alma propia</span></h2>
+        <p>V REY HOTEL nació en 2020 con una idea clara: crear un espacio donde el lujo no estuviera reñido con la calidez. Cada rincón del hotel fue diseñado pensando en el descanso, el detalle y la experiencia del huésped.</p>
+        <p>Nuestro equipo combina años de experiencia en hotelería de lujo con un trato cercano y personalizado. No somos una cadena: somos un hotel con identidad, con historia y con pasión por lo que hacemos.</p>
+        <p>En V REY HOTEL creemos que los pequeños detalles marcan la diferencia. Por eso cuidamos cada aspecto, desde la selección de los textiles hasta el café de la mañana.</p>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div><div class="stat-num">16</div><div class="stat-label">Habitaciones</div></div>
+      <div><div class="stat-num">4</div><div class="stat-label">Pisos</div></div>
+      <div><div class="stat-num">5★</div><div class="stat-label">Calificación</div></div>
+      <div><div class="stat-num">24/7</div><div class="stat-label">Servicio</div></div>
+    </div>
+  </section>
+
+  <!-- GALERÍA DE INSTALACIONES -->
+  <section class="section-full" style="background:var(--negro-suave);">
+    <div class="section-header">
+      <span class="section-eyebrow">Instalaciones</span>
+      <h2 class="section-title">Espacios para <span>disfrutar</span></h2>
+      <p class="section-sub">Recorre cada ambiente de V REY HOTEL: piscina, bar, salas de conferencias y más.</p>
+    </div>
+    <div class="galeria-instalaciones">
+      <div class="galeria-item grande">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200" alt="Piscina del hotel" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Piscina Exterior</h4>
+          <p>Climatizada · Vista panorámica</p>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800" alt="Bar del hotel" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Bar Lounge</h4>
+          <p>Cócteles de autor</p>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" alt="Restaurante del hotel" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Restaurante Gourmet</h4>
+          <p>Alta cocina</p>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800" alt="Sala de conferencias" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Sala de Conferencias</h4>
+          <p>Equipada para 80 personas</p>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800" alt="Spa del hotel" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Spa & Wellness</h4>
+          <p>Masajes y tratamientos</p>
+        </div>
+      </div>
+      <div class="galeria-item grande">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200" alt="Gimnasio del hotel" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Gimnasio</h4>
+          <p>Abierto las 24 horas</p>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800" alt="Lobby del hotel" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Lobby & Recepción</h4>
+          <p>Atención 24/7</p>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800" alt="Salón de eventos" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Salón de Eventos</h4>
+          <p>Bodas y celebraciones</p>
+        </div>
+      </div>
+      <div class="galeria-item">
+        <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800" alt="Terraza del hotel" loading="lazy">
+        <div class="galeria-caption">
+          <h4>Terraza Panorámica</h4>
+          <p>Vista 360° de la ciudad</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <span class="section-eyebrow">Nuestros valores</span>
+      <h2 class="section-title">Lo que nos <span>define</span></h2>
+    </div>
+    <div class="valores-grid" style="max-width:1200px;margin:0 auto;">
+      <div class="valor">
+        <h3>Excelencia</h3>
+        <p>Cada detalle está cuidado al máximo para ofrecerte una experiencia impecable desde que llegas hasta que te vas.</p>
+      </div>
+      <div class="valor">
+        <h3>Calidez</h3>
+        <p>Creemos en la hospitalidad genuina. Nuestro equipo te hará sentir como en casa desde el primer momento.</p>
+      </div>
+      <div class="valor">
+        <h3>Diseño</h3>
+        <p>Un espacio pensado estéticamente, con materiales nobles, iluminación cálida y una paleta dorada que evoca el lujo sereno.</p>
+      </div>
+      <div class="valor">
+        <h3>Gastronomía</h3>
+        <p>Nuestro restaurante celebra los ingredientes locales con técnicas contemporáneas. Comer aquí es un viaje.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PÁGINA: CONTACTO
+     ============================================================ -->
+<div class="page" id="page-contacto">
+  <section class="page-header">
+    <span class="page-header-eyebrow">Estamos para ti</span>
+    <h1>Contác<span>tanos</span></h1>
+    <p>Escríbenos y te responderemos a la brevedad.</p>
+  </section>
+
+  <section class="section">
+    <div class="contacto-grid">
+      <div class="contacto-info-card">
+        <h2 class="section-title" style="font-size:1.8rem;margin-bottom:1.5rem;">Información</h2>
+
+        <div class="contacto-item">
+          <div class="contacto-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div><h4>Dirección</h4><p>Av. Principal #123, Ciudad</p></div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div><h4>Teléfono</h4><p>77108323</p></div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div><h4>Email</h4><p>reservas@vreyhotel.com</p></div>
+        </div>
+        <div class="contacto-item">
+          <div class="contacto-item-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div><h4>Recepción</h4><p>Abierto 24 horas</p></div>
+        </div>
+      </div>
+
+      <form class="form-card" id="formContacto">
+        <div class="form-group"><label for="cNombre">Nombre *</label><input type="text" id="cNombre" required></div>
+        <div class="form-group"><label for="cEmail">Email</label><input type="email" id="cEmail"></div>
+        <div class="form-group"><label for="cAsunto">Asunto</label><input type="text" id="cAsunto"></div>
+        <div class="form-group"><label for="cMensaje">Mensaje *</label><textarea id="cMensaje" required></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Enviar mensaje por WhatsApp</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>V <span>REY</span> HOTEL</h3>
+      <div class="footer-sub">Hotel de Lujo</div>
+      <p>Un hotel de lujo donde la excelencia y la calidez se encuentran. Vive una experiencia inolvidable.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explorar</h4>
+      <a onclick="nav('habitaciones')">Habitaciones</a>
+      <a onclick="nav('restaurante')">Restaurante</a>
+      <a onclick="nav('nosotros')">Nosotros</a>
+      <a onclick="nav('contacto')">Contacto</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p>Av. Principal #123</p>
+      <p>77108323</p>
+      <p>reservas@vreyhotel.com</p>
+    </div>
+    <div class="footer-col">
+      <h4>Síguenos</h4>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">TikTok</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2025 V REY HOTEL. Todos los derechos reservados.</div>
+</footer>
+
+<!-- ========== BOTTOM NAV ========== -->
+<nav class="bottom-nav">
+  <a data-page="home" onclick="nav('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Inicio</span>
+  </a>
+  <a data-page="habitaciones" onclick="nav('habitaciones')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M2 8h18a2 2 0 012 2v10M2 17h20M6 8V6a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+    <span>Habitaciones</span>
+  </a>
+  <a data-page="restaurante" onclick="nav('restaurante')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2M7 2v20M21 15V2v0a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+    <span>Restaurante</span>
+  </a>
+  <a data-page="nosotros" onclick="nav('nosotros')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>Nosotros</span>
+  </a>
+  <a data-page="contacto" onclick="nav('contacto')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    <span>Contacto</span>
+  </a>
+</nav>
+
+<!-- ========== BOTÓN CARRITO SUPERIOR (cubiertos) ========== -->
+<button class="carrito-topbar" id="carritoTopbar" style="display:none;" onclick="abrirCarritoLateral()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/>
+    <path d="M7 2v20"/>
+    <path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+  </svg>
+  <span class="carrito-label">Pedido</span>
+  <span class="carrito-count" id="carritoCount">0</span>
+</button>
+
+<!-- ========== OVERLAY Y PANEL LATERAL DEL CARRITO ========== -->
+<div class="carrito-overlay" id="carritoOverlay" onclick="cerrarCarritoLateral()"></div>
+<div class="carrito-lateral" id="carritoLateral">
+  <div class="carrito-lateral-header">
+    <h3>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/>
+        <path d="M7 2v20"/>
+        <path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>
+      </svg>
+      Tu pedido
+    </h3>
+    <button class="carrito-cerrar" onclick="cerrarCarritoLateral()">&times;</button>
+  </div>
+  <div class="carrito-lateral-body" id="listaPedidoLateral"></div>
+  <div class="carrito-lateral-footer">
+    <div class="total-row"><small>Total</small><span id="totalLateral">Bs. 0</span></div>
+    <label for="habPedido">Número de habitación</label>
+    <input type="text" id="habPedido" placeholder="Ej: 201">
+    <button class="btn btn-primary" id="enviarPedidoLateral">📲 Enviar pedido por WhatsApp</button>
+  </div>
+</div>
+
+<!-- ========== MODAL GENÉRICO ========== -->
+<div class="modal" id="modalGlobal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="cerrarModal()">&times;</button>
+    <div id="modalInner"></div>
+  </div>
+</div>
+
+<!-- ========== LIGHTBOX ========== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="cerrarLightbox()">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<!-- ========== TOAST ========== -->
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==========================================================
+   V REY HOTEL — Datos
+   ========================================================== */
+const CONFIG = {
+  nombreHotel: "V REY HOTEL",
+  whatsapp: "77108323"
+};
+
+/* Moneda: Bolivianos (Bs.) */
+const MONEDA = "Bs.";
+
+/* ==========================================================
+   HABITACIONES — Precios entre 120 y 200 Bs.
+   ========================================================== */
+const habitaciones = [
+  { num:101, piso:1, tipo:"Estándar", precio:120, disponible:true,
+    camas:"1 cama doble", capacidad:2, tamano:22,
+    descripcion:"Un refugio acogedor con acabados en madera natural y luz cálida. Perfecta para una escapada tranquila con todas las comodidades esenciales.",
+    amenities:["Wi-Fi de alta velocidad","Aire acondicionado","TV 42\"","Baño privado","Caja fuerte","Desayuno incluido"],
+    galeria:["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200","https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800","https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800","https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200"],
+    reservasOcupadas:["2025-01-10/2025-01-15","2025-02-01/2025-02-05"] },
+  { num:102, piso:1, tipo:"Estándar", precio:120, disponible:true,
+    camas:"1 cama doble", capacidad:2, tamano:22,
+    descripcion:"Diseño minimalista con detalles dorados y vistas al jardín interior. Ideal para viajeros que buscan confort y serenidad.",
+    amenities:["Wi-Fi de alta velocidad","Aire acondicionado","TV 42\"","Baño privado","Caja fuerte","Desayuno incluido"],
+    galeria:["https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200","https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800","https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=800","https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200"],
+    reservasOcupadas:[] },
+  { num:103, piso:1, tipo:"Estándar", precio:125, disponible:true,
+    camas:"1 cama doble", capacidad:2, tamano:22,
+    descripcion:"Habitación acogedora con todas las comodidades para una estancia placentera.",
+    amenities:["Wi-Fi","Aire acondicionado","TV","Baño privado"],
+    galeria:["https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200","https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800","https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800","https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200"],
+    reservasOcupadas:["2025-01-20/2025-01-25"] },
+  { num:104, piso:1, tipo:"Estándar", precio:130, disponible:true,
+    camas:"1 cama doble", capacidad:2, tamano:22,
+    descripcion:"Confort y estilo en perfecta armonía. Iluminación natural y ambiente relajante.",
+    amenities:["Wi-Fi de alta velocidad","Aire acondicionado","TV 42\"","Baño privado","Caja fuerte","Desayuno incluido"],
+    galeria:["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200","https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800","https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800","https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200"],
+    reservasOcupadas:[] },
+  { num:201, piso:2, tipo:"Superior", precio:150, disponible:true,
+    camas:"1 cama King", capacidad:2, tamano:32,
+    descripcion:"Espaciosa habitación superior con cama king, balcón privado y vista panorámica. Detalles de lujo en cada rincón.",
+    amenities:["Wi-Fi de alta velocidad","Aire acondicionado","TV 55\" Smart","Baño con bañera","Balcón privado","Minibar","Desayuno incluido"],
+    galeria:["https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=1200","https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800","https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800","https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=1200"],
+    reservasOcupadas:["2025-03-05/2025-03-10"] },
+  { num:202, piso:2, tipo:"Superior", precio:150, disponible:true,
+    camas:"1 cama King", capacidad:2, tamano:32,
+    descripcion:"Habitación superior con balcón y vistas espectaculares.",
+    amenities:["Wi-Fi","Aire acondicionado","TV Smart","Baño con bañera","Balcón"],
+    galeria:["https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200","https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800","https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800","https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=1200"],
+    reservasOcupadas:[] },
+  { num:203, piso:2, tipo:"Superior", precio:155, disponible:true,
+    camas:"1 cama King", capacidad:2, tamano:32,
+    descripcion:"Luminosa y elegante, con textiles de alta gama y un balcón para disfrutar del atardecer.",
+    amenities:["Wi-Fi de alta velocidad","Aire acondicionado","TV 55\" Smart","Baño con bañera","Balcón privado","Minibar","Desayuno incluido"],
+    galeria:["https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200","https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800","https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800","https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=1200"],
+    reservasOcupadas:["2025-04-01/2025-04-07"] },
+  { num:204, piso:2, tipo:"Superior", precio:160, disponible:true,
+    camas:"1 cama King", capacidad:2, tamano:32,
+    descripcion:"Combinación perfecta de confort moderno y toques clásicos. Tu hogar lejos de casa.",
+    amenities:["Wi-Fi de alta velocidad","Aire acondicionado","TV 55\" Smart","Baño con bañera","Balcón privado","Minibar","Desayuno incluido"],
+    galeria:["https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=1200","https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800","https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800","https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1200"],
+    reservasOcupadas:[] },
+  { num:301, piso:3, tipo:"Deluxe", precio:180, disponible:true,
+    camas:"1 cama King + sofá", capacidad:3, tamano:45,
+    descripcion:"Suite deluxe con jacuzzi privado, sala independiente y vista panorámica. Una experiencia inigualable de lujo.",
+    amenities:["Wi-Fi de alta velocidad","Jacuzzi privado","Aire acondicionado","TV 65\" Smart","Sala independiente","Vista panorámica","Minibar premium","Servicio a la habitación 24/7","Desayuno gourmet"],
+    galeria:["https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200","https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800","https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800","https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200"],
+    reservasOcupadas:["2025-05-10/2025-05-15"] },
+  { num:302, piso:3, tipo:"Deluxe", precio:180, disponible:true,
+    camas:"1 cama King + sofá", capacidad:3, tamano:45,
+    descripcion:"Suite de lujo con todas las amenidades premium.",
+    amenities:["Wi-Fi","Jacuzzi","Aire acondicionado","TV Smart","Sala"],
+    galeria:["https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=1200","https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800","https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800","https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200"],
+    reservasOcupadas:[] },
+  { num:303, piso:3, tipo:"Deluxe", precio:185, disponible:true,
+    camas:"1 cama King + sofá", capacidad:3, tamano:45,
+    descripcion:"Espacio amplio con decoración de autor, jacuzzi y servicio personalizado.",
+    amenities:["Wi-Fi de alta velocidad","Jacuzzi privado","Aire acondicionado","TV 65\" Smart","Sala independiente","Vista panorámica","Minibar premium","Servicio a la habitación 24/7","Desayuno gourmet"],
+    galeria:["https://images.unsplash.com/photo-1591088398332-8a7791972843?w=1200","https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800","https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800","https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200"],
+    reservasOcupadas:["2025-06-01/2025-06-08"] },
+  { num:304, piso:3, tipo:"Deluxe", precio:190, disponible:true,
+    camas:"1 cama King + sofá", capacidad:3, tamano:45,
+    descripcion:"La suite perfecta para una escapada especial. Lujo, privacidad y confort.",
+    amenities:["Wi-Fi de alta velocidad","Jacuzzi privado","Aire acondicionado","TV 65\" Smart","Sala independiente","Vista panorámica","Minibar premium","Servicio a la habitación 24/7","Desayuno gourmet"],
+    galeria:["https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200","https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800","https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800","https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200"],
+    reservasOcupadas:[] },
+  { num:401, piso:4, tipo:"Presidencial", precio:200, disponible:true,
+    camas:"1 cama King + sofá cama", capacidad:4, tamano:70,
+    descripcion:"La joya de V REY HOTEL. Terraza privada con vista 360°, jacuzzi exterior, mayordomo personal y servicio las 24 horas. El máximo exponente del lujo.",
+    amenities:["Wi-Fi de alta velocidad","Terraza privada","Jacuzzi exterior","Mayordomo personal","TV 75\" Smart","Comedor privado","Vista 360°","Minibar premium","Servicio 24/7","Desayuno gourmet","Traslado aeropuerto"],
+    galeria:["https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200","https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800","https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800","https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200"],
+    reservasOcupadas:["2025-07-01/2025-07-10"] },
+  { num:402, piso:4, tipo:"Presidencial", precio:200, disponible:true,
+    camas:"1 cama King + sofá cama", capacidad:4, tamano:70,
+    descripcion:"Suite presidencial con todas las amenidades de lujo y vistas inigualables.",
+    amenities:["Wi-Fi de alta velocidad","Terraza privada","Jacuzzi exterior","Mayordomo personal","TV 75\" Smart","Comedor privado","Vista 360°","Minibar premium","Servicio 24/7","Desayuno gourmet","Traslado aeropuerto"],
+    galeria:["https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200","https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800","https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800","https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200"],
+    reservasOcupadas:[] },
+  { num:403, piso:4, tipo:"Presidencial", precio:200, disponible:true,
+    camas:"1 cama King + sofá cama", capacidad:4, tamano:70,
+    descripcion:"Suite presidencial con todas las comodidades.",
+    amenities:["Wi-Fi","Jacuzzi","Terraza","Mayordomo"],
+    galeria:["https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200","https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800","https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800","https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200"],
+    reservasOcupadas:["2025-08-15/2025-08-20"] },
+  { num:404, piso:4, tipo:"Presidencial", precio:200, disponible:true,
+    camas:"1 cama King + sofá cama", capacidad:4, tamano:70,
+    descripcion:"Máximo lujo y privacidad en el último piso del hotel.",
+    amenities:["Wi-Fi de alta velocidad","Terraza privada","Jacuzzi exterior","Mayordomo personal","TV 75\" Smart","Comedor privado","Vista 360°","Minibar premium","Servicio 24/7","Desayuno gourmet","Traslado aeropuerto"],
+    galeria:["https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200","https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800","https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800","https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200"],
+    reservasOcupadas:[] }
+];
+
+/* ==========================================================
+   MENÚ RESTAURANTE — precios entre 20 y 80 Bs.
+   ========================================================== */
+const menu = {
+  entradas: [
+    { id:"e1", nombre:"Ceviche Clásico", desc:"Pescado fresco, limón sutil y ají amarillo", precio:55, img:"https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=600" },
+    { id:"e2", nombre:"Bruschettas Doradas", desc:"Pan tostado, tomate cherry y albahaca fresca", precio:35, img:"https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=600" },
+    { id:"e3", nombre:"Carpaccio de Res", desc:"Finas láminas con parmesano y rúcula", precio:65, img:"https://images.unsplash.com/photo-1544025162-d76694265947?w=600" },
+    { id:"e4", nombre:"Sopa de Cebolla Gratinada", desc:"Receta francesa con queso gruyère", precio:40, img:"https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" }
+  ],
+  principales: [
+    { id:"p1", nombre:"Filete Mignon", desc:"Con papas trufadas y salsa de vino tinto", precio:80, img:"https://images.unsplash.com/photo-1600891964092-4316c288032e?w=600" },
+    { id:"p2", nombre:"Salmón a la Parrilla", desc:"Con vegetales al vapor y limón", precio:75, img:"https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600" },
+    { id:"p3", nombre:"Pasta Carbonara", desc:"Receta tradicional italiana con panceta", precio:50, img:"https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=600" },
+    { id:"p4", nombre:"Pollo al Horno Provenzal", desc:"Con hierbas finas y papas rústicas", precio:60, img:"https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=600" }
+  ],
+  postres: [
+    { id:"d1", nombre:"Tiramisú Clásico", desc:"Con mascarpone y café espresso", precio:30, img:"https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=600" },
+    { id:"d2", nombre:"Cheesecake de Frutos Rojos", desc:"Base de galleta y coulis casero", precio:35, img:"https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=600" },
+    { id:"d3", nombre:"Volcán de Chocolate", desc:"Con helado de vainilla artesanal", precio:40, img:"https://images.unsplash.com/photo-1624353365286-3f8d62daad51?w=600" },
+    { id:"d4", nombre:"Flan Casero", desc:"Con caramelo y crema batida", precio:25, img:"https://images.unsplash.com/photo-1528975604071-b4dc52a2d18c?w=600" }
+  ],
+  bebidas: [
+    { id:"b1", nombre:"Vino Tinto Reserva", desc:"Copa de la casa, reserva especial", precio:45, img:"https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600" },
+    { id:"b2", nombre:"Mojito Clásico", desc:"Ron blanco, menta y limón", precio:50, img:"https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=600" },
+    { id:"b3", nombre:"Jugo Natural", desc:"Frutas frescas de temporada", precio:20, img:"https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=600" },
+    { id:"b4", nombre:"Espresso Italiano", desc:"Grano premium recién molido", precio:20, img:"https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?w=600" }
+  ]
+};
+
+/* ==========================================================
+   Helpers
+   ========================================================== */
+const qs = s => document.querySelector(s);
+const qsa = s => document.querySelectorAll(s);
+const fmt = n => MONEDA + " " + n.toLocaleString("es-BO");
+
+function mostrarToast(msg){
+  const t = qs("#toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=>t.classList.remove("show"), 2500);
+}
+
+/* ==========================================================
+   DISPONIBILIDAD POR FECHAS
+   ========================================================== */
+function parseRango(rango){
+  const [ini, fin] = rango.split("/");
+  return { ini: new Date(ini + "T00:00:00"), fin: new Date(fin + "T23:59:59") };
+}
+
+function fechasSeSolapan(in1, fi1, in2, fi2){
+  return in1 <= fi2 && fi1 >= in2;
+}
+
+function estadoHabitacionEnFechas(hab, fechaEntrada, fechaSalida){
+  if (!fechaEntrada || !fechaSalida) return "consultar";
+  const entrada = new Date(fechaEntrada + "T00:00:00");
+  const salida = new Date(fechaSalida + "T23:59:59");
+  if (isNaN(entrada.getTime()) || isNaN(salida.getTime()) || entrada >= salida) return "consultar";
+
+  for (const rango of hab.reservasOcupadas){
+    const r = parseRango(rango);
+    if (fechasSeSolapan(entrada, salida, r.ini, r.fin)) return "ocupada";
+  }
+  return "disponible";
+}
+
+/* ==========================================================
+   ROUTER (por hash)
+   ========================================================== */
+function nav(page, param){
+  const hash = param ? `#${page}/${param}` : `#${page}`;
+  if (location.hash === hash) renderPage();
+  else location.hash = hash;
+}
+
+function renderPage(){
+  const hash = location.hash.replace("#","") || "home";
+  const [page, param] = hash.split("/");
+
+  qsa(".page").forEach(p=>p.classList.remove("active"));
+  const target = qs("#page-" + page);
+  if (target) target.classList.add("active");
+  else qs("#page-home").classList.add("active");
+
+  qsa(".nav-desktop a, .bottom-nav a").forEach(a=>{
+    a.classList.toggle("active", a.dataset.page === page);
+  });
+
+  window.scrollTo(0, 0);
+
+  const carritoTopbar = qs("#carritoTopbar");
+  if (carritoTopbar){
+    carritoTopbar.style.display = (page === "restaurante") ? "flex" : "none";
+  }
+
+  if (page === "home") renderHomeHabs();
+  if (page === "habitaciones") { renderBarraFechas(); renderFiltros(); renderHabitaciones(); renderSelectorPiso(); renderCroquis(); }
+  if (page === "habitacion") initDetalleHabitacion(parseInt(param));
+  if (page === "restaurante") { renderTabs(); renderMenu(); renderPedidoLateral(); actualizarBotonCarrito(); }
+}
+
+window.addEventListener("hashchange", renderPage);
+
+/* ==========================================================
+   BARRA DE FECHAS
+   ========================================================== */
+let fechasConsulta = { entrada:null, salida:null };
+
+function renderBarraFechas(){
+  const ent = qs("#fechaEntrada");
+  const sal = qs("#fechaSalida");
+  if (!ent || !sal) return;
+  ent.value = fechasConsulta.entrada || "";
+  sal.value = fechasConsulta.salida || "";
+
+  qs("#btnConsultarFechas").onclick = ()=>{
+    const e = ent.value;
+    const s = sal.value;
+    if (!e || !s){ mostrarToast("Selecciona ambas fechas para consultar"); return; }
+    if (new Date(e) >= new Date(s)){ mostrarToast("La fecha de salida debe ser posterior a la de entrada"); return; }
+    fechasConsulta.entrada = e;
+    fechasConsulta.salida = s;
+    renderHabitaciones();
+    mostrarToast("Disponibilidad actualizada según fechas");
+  };
+  qs("#btnLimpiarFechas").onclick = ()=>{
+    fechasConsulta.entrada = null;
+    fechasConsulta.salida = null;
+    ent.value = ""; sal.value = "";
+    renderHabitaciones();
+    mostrarToast("Filtro de fechas eliminado");
+  };
+}
+
+/* ==========================================================
+   HOME — 3 habitaciones destacadas
+   ========================================================== */
+function renderHomeHabs(){
+  const grid = qs("#gridHomeHabs");
+  if (!grid) return;
+  grid.innerHTML = "";
+  habitaciones.slice(0,3).forEach(h=>{
+    const card = document.createElement("div");
+    card.className = "hab-card";
+    card.onclick = ()=>nav("habitacion", h.num);
+    card.innerHTML = `
+      <div class="hab-img-wrap">
+        <img src="${h.galeria[0]}" alt="${h.tipo}" loading="lazy">
+        <span class="hab-piso-badge">Piso ${h.piso}</span>
+        <span class="hab-badge consultar">Consultar fechas</span>
+      </div>
+      <div class="hab-body">
+        <div class="tipo-tag">${h.tipo}</div>
+        <h3>Habitación ${h.num}</h3>
+        <p>${h.descripcion.substring(0,90)}...</p>
+        <div class="hab-footer">
+          <div class="hab-precio">${fmt(h.precio)}<small>por noche</small></div>
+          <span class="btn btn-primary" style="padding:.6rem 1.4rem;font-size:.8rem;">Ver más</span>
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+/* ==========================================================
+   HABITACIONES — Listado con disponibilidad por fechas
+   ========================================================== */
+let filtroActual = "todos";
+
+function renderFiltros(){
+  const cont = qs("#filtros");
+  cont.innerHTML = "";
+  ["todos","1","2","3","4"].forEach(p=>{
+    const b = document.createElement("button");
+    b.className = "filtro" + (p===filtroActual?" active":"");
+    b.textContent = p==="todos" ? "Todas" : "Piso "+p;
+    b.onclick = ()=>{ filtroActual = p; renderFiltros(); renderHabitaciones(); };
+    cont.appendChild(b);
+  });
+}
+
+function renderHabitaciones(){
+  const grid = qs("#gridHabitaciones");
+  if (!grid) return;
+  grid.innerHTML = "";
+
+  const { entrada, salida } = fechasConsulta;
+
+  habitaciones
+    .filter(h => filtroActual === "todos" || h.piso === parseInt(filtroActual))
+    .forEach(h=>{
+      const estadoFecha = estadoHabitacionEnFechas(h, entrada, salida);
+
+      let badgeClass, badgeText;
+      if (entrada && salida){
+        if (estadoFecha === "disponible"){ badgeClass="disponible"; badgeText="Disponible"; }
+        else { badgeClass="ocupada"; badgeText="Ocupada"; }
+      } else {
+        badgeClass = "consultar"; badgeText = "Consultar fechas";
+      }
+
+      const card = document.createElement("div");
+      card.className = "hab-card";
+      card.onclick = ()=>nav("habitacion", h.num);
+      card.innerHTML = `
+        <div class="hab-img-wrap">
+          <img src="${h.galeria[0]}" alt="${h.tipo}" loading="lazy">
+          <span class="hab-piso-badge">Piso ${h.piso}</span>
+          <span class="hab-badge ${badgeClass}">${badgeText}</span>
+        </div>
+        <div class="hab-body">
+          <div class="tipo-tag">${h.tipo}</div>
+          <h3>Habitación ${h.num}</h3>
+          <p>${h.descripcion.substring(0,90)}...</p>
+          <div class="hab-footer">
+            <div class="hab-precio">${fmt(h.precio)}<small>por noche</small></div>
+            <span class="btn btn-primary" style="padding:.6rem 1.4rem;font-size:.8rem;">Ver más</span>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+}
+
+/* ==========================================================
+   CROQUIS
+   ========================================================== */
+let pisoActual = 1;
+
+function renderSelectorPiso(){
+  const cont = qs("#selectorPiso");
+  cont.innerHTML = "";
+  [1,2,3,4].forEach(p=>{
+    const b = document.createElement("button");
+    b.className = "piso-btn" + (p===pisoActual?" active":"");
+    b.textContent = "Piso "+p;
+    b.onclick = ()=>{ pisoActual = p; renderSelectorPiso(); renderCroquis(); };
+    cont.appendChild(b);
+  });
+}
+
+function renderCroquis(){
+  const plano = qs("#croquis");
+  if (!plano) return;
+  plano.innerHTML = "";
+  qs("#planoPisoLabel").textContent = pisoActual;
+
+  const { entrada, salida } = fechasConsulta;
+
+  habitaciones.filter(h=>h.piso === pisoActual).forEach(h=>{
+    const estadoFecha = estadoHabitacionEnFechas(h, entrada, salida);
+    const clase = (entrada && salida)
+      ? (estadoFecha === "disponible" ? "disponible" : "ocupada")
+      : "disponible";
+
+    const div = document.createElement("div");
+    div.className = `hab-plano ${clase}`;
+    div.innerHTML = `
+      <span class="icono">${h.tipo.charAt(0)}</span>
+      <span class="num">${h.num}</span>
+      <span class="tipo">${h.tipo}</span>
+    `;
+    if (clase === "disponible") div.onclick = ()=>nav("habitacion", h.num);
+    plano.appendChild(div);
+  });
+
+  const esc = document.createElement("div");
+  esc.className = "escaleras";
+  esc.textContent = "Escaleras";
+  plano.appendChild(esc);
+}
+
+/* ==========================================================
+   DETALLE HABITACIÓN CON CARRUSEL Y DISPONIBILIDAD
+   ========================================================== */
+let carruselIndex = 0;
+let carruselTotal = 0;
+let habActual = null;
+
+function initDetalleHabitacion(num){
+  const h = habitaciones.find(x=>x.num === num);
+  if (!h){
+    qs("#page-habitacion").innerHTML = '<div style="padding:5rem;text-align:center;"><h1>Habitación no encontrada</h1><button class="btn btn-primary" onclick="nav(\'habitaciones\')" style="margin-top:1rem;">Volver</button></div>';
+    return;
+  }
+  habActual = h;
+  document.title = `Habitación ${h.num} - ${h.tipo} | V REY HOTEL`;
+
+  // CARRUSEL
+  const carrusel = qs("#carruselHab");
+  const dots = qs("#carruselDots");
+  carrusel.innerHTML = "";
+  dots.innerHTML = "";
+  carruselTotal = h.galeria.length;
+  carruselIndex = 0;
+
+  h.galeria.forEach((src, i) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = `Habitación ${h.num} - Imagen ${i+1}`;
+    img.loading = i === 0 ? "eager" : "lazy";
+    img.onclick = ()=>abrirLightbox(src);
+    carrusel.appendChild(img);
+
+    const dot = document.createElement("button");
+    dot.className = "carrusel-dot" + (i === 0 ? " active" : "");
+    dot.onclick = ()=>irASlide(i);
+    dots.appendChild(dot);
+  });
+
+  qs("#carruselPrev").onclick = ()=>moverCarrusel(-1);
+  qs("#carruselNext").onclick = ()=>moverCarrusel(1);
+
+  // Datos
+  qs("#habTipo").textContent = h.tipo;
+  qs("#habTitulo").textContent = `Habitación ${h.num}`;
+  qs("#habDescripcion").textContent = h.descripcion;
+
+  const amen = qs("#habAmenities");
+  amen.innerHTML = "";
+  h.amenities.forEach(a=>{
+    const d = document.createElement("div");
+    d.className = "amenity";
+    d.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> ${a}`;
+    amen.appendChild(d);
+  });
+
+  qs("#habPrecio").textContent = fmt(h.precio);
+  qs("#infoCamas").textContent = h.camas;
+  qs("#infoCapacidad").textContent = h.capacidad + " personas";
+  qs("#infoTamano").textContent = h.tamano + " m²";
+  qs("#infoPiso").textContent = "Piso " + h.piso;
+
+  const estado = qs("#infoEstado");
+  estado.textContent = "Consultar fechas";
+  estado.style.color = "var(--dorado)";
+
+  actualizarEstadoDisponibilidadDetalle();
+
+  const formReserva = qs("#formReserva");
+  const reservaOcupada = qs("#reservaOcupada");
+  formReserva.style.display = "block";
+  reservaOcupada.style.display = "none";
+
+  if (fechasConsulta.entrada) qs("#resLlegada").value = fechasConsulta.entrada;
+  if (fechasConsulta.salida) qs("#resSalida").value = fechasConsulta.salida;
+
+  qs("#btnReservar").onclick = ()=>{
+    const nombre = qs("#resNombre").value.trim();
+    const email = qs("#resEmail").value.trim();
+    const llegada = qs("#resLlegada").value;
+    const salida = qs("#resSalida").value;
+    const personas = qs("#resPersonas").value;
+
+    if (!nombre){
+      mostrarToast("Por favor ingresa tu nombre completo");
+      qs("#resNombre").focus();
+      return;
+    }
+
+    if (llegada && salida){
+      const est = estadoHabitacionEnFechas(h, llegada, salida);
+      if (est === "ocupada"){
+        mostrarToast("La habitación está ocupada en esas fechas. Prueba otras fechas.");
+        return;
+      }
+    }
+
+    let msg = `🛎️ *SOLICITUD DE RESERVA - ${CONFIG.nombreHotel}*\n\n`;
+    msg += `🏠 *Habitación:* ${h.num} (${h.tipo})\n`;
+    msg += `📍 *Piso:* ${h.piso}\n`;
+    msg += `💰 *Precio:* ${fmt(h.precio)}/noche\n\n`;
+    msg += `👤 *Nombre:* ${nombre}\n`;
+    if (email) msg += `📧 *Email:* ${email}\n`;
+    if (llegada) msg += `📅 *Llegada:* ${llegada}\n`;
+    if (salida) msg += `📅 *Salida:* ${salida}\n`;
+    msg += `👥 *Personas:* ${personas}\n\n`;
+    msg += `Por favor confirmar disponibilidad. ¡Gracias!`;
+
+    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+    mostrarToast("Abriendo WhatsApp para confirmar...");
+  };
+
+  qs("#resLlegada").addEventListener("change", actualizarEstadoDisponibilidadDetalle);
+  qs("#resSalida").addEventListener("change", actualizarEstadoDisponibilidadDetalle);
+}
+
+function actualizarEstadoDisponibilidadDetalle(){
+  if (!habActual) return;
+  const h = habActual;
+  const llegada = qs("#resLlegada").value;
+  const salida = qs("#resSalida").value;
+  const estadoDiv = qs("#estadoDisponibilidad");
+  const infoEstado = qs("#infoEstado");
+  const reservaOcupada = qs("#reservaOcupada");
+  const formReserva = qs("#formReserva");
+
+  if (!llegada || !salida){
+    estadoDiv.style.display = "none";
+    infoEstado.textContent = "Consultar fechas";
+    infoEstado.style.color = "var(--dorado)";
+    formReserva.style.display = "block";
+    reservaOcupada.style.display = "none";
+    return;
+  }
+
+  const est = estadoHabitacionEnFechas(h, llegada, salida);
+  estadoDiv.style.display = "block";
+
+  if (est === "disponible"){
+    estadoDiv.className = "estado-disponibilidad libre";
+    estadoDiv.textContent = `✓ Disponible del ${llegada} al ${salida}`;
+    infoEstado.textContent = "Disponible en fechas";
+    infoEstado.style.color = "var(--verde)";
+    formReserva.style.display = "block";
+    reservaOcupada.style.display = "none";
+  } else if (est === "ocupada"){
+    estadoDiv.className = "estado-disponibilidad ocupada";
+    estadoDiv.textContent = `✗ Ocupada del ${llegada} al ${salida}`;
+    infoEstado.textContent = "Ocupada en fechas";
+    infoEstado.style.color = "var(--rojo)";
+    formReserva.style.display = "none";
+    reservaOcupada.style.display = "block";
+  } else {
+    estadoDiv.style.display = "none";
+    infoEstado.textContent = "Consultar fechas";
+    infoEstado.style.color = "var(--dorado)";
+    formReserva.style.display = "block";
+    reservaOcupada.style.display = "none";
+  }
+}
+
+/* ==========================================================
+   CARRUSEL — Funciones
+   ========================================================== */
+function moverCarrusel(dir){
+  carruselIndex = (carruselIndex + dir + carruselTotal) % carruselTotal;
+  actualizarCarrusel();
+}
+
+function irASlide(index){
+  carruselIndex = index;
+  actualizarCarrusel();
+}
+
+function actualizarCarrusel(){
+  const carrusel = qs("#carruselHab");
+  if (!carrusel) return;
+  carrusel.style.transform = `translateX(-${carruselIndex * 100}%)`;
+  const dots = qsa("#carruselDots .carrusel-dot");
+  dots.forEach((d, i)=>d.classList.toggle("active", i === carruselIndex));
+}
+
+/* ==========================================================
+   LIGHTBOX
+   ========================================================== */
+function abrirLightbox(src){
+  qs("#lbImg").src = src;
+  qs("#lightbox").classList.add("active");
+}
+function cerrarLightbox(){
+  qs("#lightbox").classList.remove("active");
+}
+
+/* ==========================================================
+   MODAL
+   ========================================================== */
+function cerrarModal(){
+  qs("#modalGlobal").classList.remove("active");
+}
+
+/* ==========================================================
+   RESTAURANTE
+   ========================================================== */
+let categoriaActual = "entradas";
+
+function renderTabs(){
+  const cont = qs("#menuTabs");
+  cont.innerHTML = "";
+  const cats = { entradas:"Entradas", principales:"Principales", postres:"Postres", bebidas:"Bebidas" };
+  Object.entries(cats).forEach(([k,label])=>{
+    const b = document.createElement("button");
+    b.className = "tab" + (k===categoriaActual?" active":"");
+    b.textContent = label;
+    b.onclick = ()=>{ categoriaActual = k; renderTabs(); renderMenu(); };
+    cont.appendChild(b);
+  });
+}
+
+function renderMenu(){
+  const grid = qs("#gridMenu");
+  grid.innerHTML = "";
+  menu[categoriaActual].forEach(p=>{
+    const card = document.createElement("div");
+    card.className = "plato";
+    card.innerHTML = `
+      <img src="${p.img}" alt="${p.nombre}" loading="lazy">
+      <div class="plato-body">
+        <h4>${p.nombre}</h4>
+        <p class="plato-desc">${p.desc}</p>
+        <div class="plato-footer">
+          <span class="plato-precio">${fmt(p.precio)}</span>
+          <button class="btn-agregar">+ Añadir</button>
+        </div>
+      </div>
+    `;
+    card.querySelector(".btn-agregar").onclick = ()=>{
+      agregarAlPedido(p);
+      mostrarToast(`✓ ${p.nombre} añadido`);
+    };
+    grid.appendChild(card);
+  });
+}
+
+/* ==========================================================
+   CARRITO
+   ========================================================== */
+const CARRITO_KEY = "vrey_carrito_bs";
+function getCarrito(){ try{return JSON.parse(localStorage.getItem(CARRITO_KEY))||[];}catch{return[];} }
+function saveCarrito(c){ localStorage.setItem(CARRITO_KEY, JSON.stringify(c)); }
+
+function agregarAlPedido(plato){
+  const c = getCarrito();
+  const ex = c.find(i=>i.id === plato.id);
+  if (ex) ex.cantidad++;
+  else c.push({ ...plato, cantidad:1 });
+  saveCarrito(c);
+  renderPedidoLateral();
+  actualizarBotonCarrito();
+}
+
+function renderPedidoLateral(){
+  const lista = qs("#listaPedidoLateral");
+  if (!lista) return;
+  const c = getCarrito();
+  if (c.length === 0){
+    lista.innerHTML = '<p class="carrito-vacio">Aún no has seleccionado platos del menú</p>';
+    const totalL = qs("#totalLateral");
+    if (totalL) totalL.textContent = fmt(0);
+    actualizarBotonCarrito();
+    return;
+  }
+  lista.innerHTML = "";
+  let total = 0;
+  c.forEach((item, index)=>{
+    total += item.precio * item.cantidad;
+    const div = document.createElement("div");
+    div.className = "item-pedido";
+    div.innerHTML = `
+      <span class="item-pedido-nombre">${item.nombre}</span>
+      <div class="controles">
+        <button class="cant-btn" data-act="menos">−</button>
+        <span class="cant-num">${item.cantidad}</span>
+        <button class="cant-btn" data-act="mas">+</button>
+        <button class="btn-quitar" data-act="quitar">×</button>
+      </div>
+    `;
+    div.querySelector('[data-act="mas"]').onclick = ()=>{
+      const cc = getCarrito(); cc[index].cantidad++; saveCarrito(cc); renderPedidoLateral(); actualizarBotonCarrito();
+    };
+    div.querySelector('[data-act="menos"]').onclick = ()=>{
+      const cc = getCarrito(); cc[index].cantidad--;
+      if (cc[index].cantidad <= 0) cc.splice(index,1);
+      saveCarrito(cc); renderPedidoLateral(); actualizarBotonCarrito();
+    };
+    div.querySelector('[data-act="quitar"]').onclick = ()=>{
+      const cc = getCarrito(); cc.splice(index,1); saveCarrito(cc); renderPedidoLateral(); actualizarBotonCarrito();
+    };
+    lista.appendChild(div);
+  });
+  const totalL = qs("#totalLateral");
+  if (totalL) totalL.textContent = fmt(total);
+  actualizarBotonCarrito();
+}
+
+function actualizarBotonCarrito(){
+  const c = getCarrito();
+  const totalItems = c.reduce((s,i)=>s+i.cantidad,0);
+  const countEl = qs("#carritoCount");
+  if (countEl) countEl.textContent = totalItems;
+}
+
+/* ==========================================================
+   ABRIR / CERRAR CARRITO LATERAL
+   ========================================================== */
+function abrirCarritoLateral(){
+  renderPedidoLateral();
+  qs("#carritoOverlay").classList.add("active");
+  qs("#carritoLateral").classList.add("active");
+}
+
+function cerrarCarritoLateral(){
+  qs("#carritoOverlay").classList.remove("active");
+  qs("#carritoLateral").classList.remove("active");
+}
+
+function initEnviarPedidoLateral(){
+  const btn = qs("#enviarPedidoLateral");
+  if (!btn) return;
+  btn.onclick = ()=>{
+    const c = getCarrito();
+    if (c.length === 0){ mostrarToast("Debes seleccionar al menos un plato"); return; }
+    const hab = qs("#habPedido").value.trim();
+    if (!hab){ mostrarToast("Ingresa tu número de habitación"); qs("#habPedido").focus(); return; }
+    let msg = `🛎️ *NUEVO PEDIDO - ${CONFIG.nombreHotel}*\n\n`;
+    msg += `🏠 *Habitación:* ${hab}\n\n📋 *Detalle:*\n`;
+    let total = 0;
+    c.forEach(i=>{
+      const sub = i.precio * i.cantidad;
+      total += sub;
+      msg += `• ${i.cantidad}x ${i.nombre} — ${fmt(sub)}\n`;
+    });
+    msg += `\n💰 *TOTAL:* ${fmt(total)}\n\n¡Gracias!`;
+    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`, "_blank");
+    mostrarToast("Pedido enviado a WhatsApp ✓");
+  };
+}
+
+/* ==========================================================
+   CONTACTO
+   ========================================================== */
+function initContacto(){
+  const form = qs("#formContacto");
+  if (!form) return;
+  form.onsubmit = e=>{
+    e.preventDefault();
+    const nombre = qs("#cNombre").value.trim();
+    const email = qs("#cEmail").value.trim();
+    const asunto = qs("#cAsunto").value.trim();
+    const msg = qs("#cMensaje").value.trim();
+    if (!nombre || !msg){ mostrarToast("Completa los campos obligatorios"); return; }
+    const texto = `Hola, soy *${nombre}*.\n\n📧 Email: ${email}\n📌 Asunto: ${asunto}\n\n💬 Mensaje:\n${msg}`;
+    window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(texto)}`, "_blank");
+    mostrarToast("Abriendo WhatsApp...");
+  };
+}
+
+/* ==========================================================
+   HEADER SCROLL
+   ========================================================== */
+window.addEventListener("scroll", ()=>{
+  const h = qs(".header");
+  if (!h) return;
+  h.style.background = window.scrollY > 30 ? "rgba(10,10,10,.98)" : "rgba(10,10,10,.85)";
+});
+
+/* ==========================================================
+   ESC para cerrar
+   ========================================================== */
+document.addEventListener("keydown", e=>{
+  if (e.key === "Escape"){ cerrarLightbox(); cerrarModal(); cerrarCarritoLateral(); }
+});
+
+/* ==========================================================
+   INIT
+   ========================================================== */
+document.addEventListener("DOMContentLoaded", ()=>{
+  if (!location.hash) location.hash = "#home";
+  initContacto();
+  initEnviarPedidoLateral();
+  renderPage();
+  actualizarBotonCarrito();
+});
+</script>
+</body>
+</html>
